@@ -13,6 +13,6 @@ This challenge is to showcase your skill, so it is recommended to spend time you
 
 - Download the latest version of chromedriver and ensure that your version of chrome is up to date as well
 - Run chromedriver
-- In a different terminal window or tab, cd into the homework project and you can now execute the command "mix test" and it will run all of the test files in the "test" folder
+- In a different terminal window or tab, cd into the homework project and enter the command "mix deps.get" and you can now execute the command "mix test" and it will run all of the test files in the "test" folder
 
 
