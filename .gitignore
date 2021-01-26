@@ -6,3 +6,9 @@
 
 # The directory Mix downloads your dependencies sources to.
 /deps/
+
+#The IDE files.
+/.idea/
+
+#The Image files.
+*.jpg
