@@ -1,6 +1,8 @@
 defmodule FacebookLoginTest do
   use Hound.Helpers
   use ExUnit.Case
+  modules = Code.require_file("Retryer.exs", "../homework/test")
+  List.first(modules)
 
   hound_session(
     driver: %{
@@ -126,13 +128,13 @@ defmodule FacebookLoginTest do
     reg = find_within_element(ele, :id, "reg")
     ref_box = find_within_element(reg, :id, "reg_form_box")
     gender = find_within_element(ref_box, :class, "_5wa2")
-    gender_wraper = find_within_element(gender, :class, "_5k_3")
+    find_within_element(gender, :class, "_5k_3")
     |> click()
     IO.puts "Pass"
 
     IO.puts "step 11: find submit element, Dont click"
     try do
-      submit_div = find_element(:class, "_1lch--")
+      submit_div = find_element(:class, "_1lch--") #Intentionally made this fail
     rescue
       Hound.NoSuchElementError -> take_screenshot("test/screenshots/ErrorFindingSignupbutton.jpg")
       IO.puts "Error finding Signup Button. View Screenshot for details."
@@ -144,30 +146,6 @@ defmodule FacebookLoginTest do
 
   test "" do
 
-  end
-end
-
-
-
-
-#Screenshot.take("pressed")
-#:timer.sleep(:timer.seconds(60))
-
-defmodule Retryer do
-  import Hound.Helpers.Element
-  @retry_time 1000
-
-  def element_visible?(element, retries \\ 5) do
-    if retries > 0 do
-      case element_displayed?(element) do
-        true -> true
-        false ->
-          :timer.sleep(@retry_time)
-          element_visible?(element, retries - 1)
-      end
-    else
-      element_displayed?(element)
-    end
   end
 end
 
